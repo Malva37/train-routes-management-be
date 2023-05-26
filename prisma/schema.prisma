@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model TrainRoute {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  numberOfTrain String
+  fromCity String
+  toCity String
+  dayOfDispatch String[]
+  startTime String
+  durationInRoute String
+  active Boolean
+  addInfo    String?
+}
